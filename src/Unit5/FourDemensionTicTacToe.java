@@ -1,7 +1,23 @@
 package Unit5;
-
-import java.io.IOException;
-import java.util.Arrays;
+/*
+ * Description: A simple implementation of 4-D Tic Tac Toe
+ * Creator: Kyle Kingsberry
+ * Date: 2/6/2019
+ *
+ * Quick tutorial: The game is structured as follows; You can do your turns on 3x3 2D game boards.
+ *                      3 of these game boards are stacked on top of each other to form a 3x3x3 3D cube.
+ *                      3 of these cubes are superimposed inside of each other, representing the 4th dimension,
+ *                      which in this program I have called time
+ *                  In order to win you must have 3 in a row either along the y axes,
+ *                      the x axes,
+ *                      diagonally across the x/y plane,
+ *                      vertically along the z axes,
+ *                      diagonally across the x/z plane,
+ *                      diagonally across the y/z plane,
+ *                      diagonally across the x/y plane and z axes (corner to corner in the cube),
+ *                      or any combination of these but also utilizing the fourth dimension
+ *                          (getting around a piece blocking you by playing on another cube via the fourth dimension)
+ */
 import java.util.Scanner;
 
 public class FourDemensionTicTacToe {
@@ -14,18 +30,6 @@ public class FourDemensionTicTacToe {
     public static void main(String[] args)
     {
         System.out.println(turn + "'s turn!");
-        /*
-        //Initialize one T/Z slice of the gameboard with test values
-        gameBoard[0][0][0][0] = "O";
-        gameBoard[0][1][0][0] = "X";
-        gameBoard[0][2][0][0] = "O";
-        gameBoard[1][0][0][0] = "O";
-        gameBoard[1][1][0][0] = "X";
-        gameBoard[1][2][0][0] = "O";
-        gameBoard[2][0][0][0] = "X";
-        gameBoard[2][1][0][0] = "X";
-        gameBoard[2][2][0][0] = "O";
-        */
         while(true) //Main game loop
         {
             getTurn(gameBoard); //Lets the player take their turn
