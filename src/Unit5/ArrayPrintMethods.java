@@ -12,7 +12,7 @@ public class ArrayPrintMethods {
             System.out.print(array[item] + ", ");
         }
         System.out.print(array[array.length - 1]);
-        System.out.print("]");
+        System.out.println("]");
     }
     public static void printArray(String[] array)
     {
@@ -26,22 +26,24 @@ public class ArrayPrintMethods {
     }
     public static void printArray(int[][] array)
     {
-        System.out.print("[");
+        System.out.println("[ \n");
         for(int[] subArray : array)
         {
             printArray(subArray);
+            System.out.println();
         }
 
-        System.out.print("]");
+        System.out.println("]");
     }
     public static void printArray(String[][] array)
     {
-        System.out.print("[");
+        System.out.println("[");
         for(String[] subArray : array)
         {
             printArray(subArray);
+            System.out.println();
         }
 
-        System.out.print("]");
+        System.out.println("]");
     }
 }
