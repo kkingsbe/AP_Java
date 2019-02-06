@@ -118,6 +118,8 @@ public class FourDemensionTicTacToe {
             win = true;
         if(checkFor3DWins(gameBoard, player))
             win = true;
+        if(checkFor4DWins(gameBoard, player))
+            win = true;
         return win;
     }
     public static boolean checkFor2DWins(String[][][][] gameBoard, String player)
@@ -268,6 +270,129 @@ public class FourDemensionTicTacToe {
                     win = true;
                 }
             } catch (NullPointerException e){}
+        }
+        return win;
+    }
+    public static boolean checkFor4DWins(String[][][][] gameBoard, String player) //The exact same as checkFor3DWins, except it ignores time cubes / time slices to allow for interdemensional play
+    {
+        boolean win = false;
+        for(int cube1 = 0; cube1 < 3; cube1 ++)
+        {
+            for(int cube2 = 0; cube2 < 3; cube2 ++)
+            {
+                for(int cube3 = 0; cube3 < 3; cube3 ++)
+                {
+                    for(int x = 0; x < 3; x ++) //Iterates over each x value in the bottom of the cube
+                    {
+                        for(int y = 0; y < 3; y ++) //Iterates over each y value in the bottom of the cube
+                        {
+                            for(int z = 0; z < 3; z ++)
+                            {
+                                try {
+                                    //Checks to see if the player got 3 in a row with the same x y and z dimensions but different time dimensions
+                                    if (gameBoard[x][y][z][0].equals(player) && gameBoard[x][y][z][1].equals(player) && gameBoard[x][y][z][2].equals(player))
+                                    {
+                                        win = true;
+                                    }
+                                } catch (NullPointerException e){}
+                                    try {
+                                        //Checks to see if the player got 3 in a row vertically
+                                        if (gameBoard[x][y][0][cube1].equals(player) && gameBoard[x][y][1][cube2].equals(player) && gameBoard[x][y][2][cube3].equals(player))
+                                        {
+                                            win = true;
+                                        }
+                                    } catch (NullPointerException e){}
+                                    try {
+                                        //Checks to see if the player got 3 in a row diagonally all with the same x value starting from the bottom
+                                        if (gameBoard[0][y][0][cube1].equals(player) && gameBoard[1][y][1][cube2].equals(player) && gameBoard[2][y][2][cube3].equals(player))
+                                        {
+                                            win = true;
+                                        }
+                                    } catch (NullPointerException e){}
+                                    try {
+                                        //Checks to see if the player got 3 in a row diagonally all with the same y value starting from the top
+                                        if (gameBoard[2][y][2][cube1].equals(player) && gameBoard[1][y][1][cube2].equals(player) && gameBoard[0][y][0][cube3].equals(player))
+                                        {
+                                            win = true;
+                                        }
+                                    } catch (NullPointerException e){}
+                                }
+                                try {
+                                    //Checks to see if the player got 3 in a row diagonally all with the same y value starting from the bottom left
+                                    if (gameBoard[x][0][0][cube1].equals(player) && gameBoard[x][1][1][cube2].equals(player) && gameBoard[x][2][2][cube3].equals(player))
+                                    {
+                                        win = true;
+                                    }
+                                } catch (NullPointerException e){}
+                                try {
+                                    //Checks to see if the player got 3 in a row diagonally all with the same y value starting from the top left
+                                    if (gameBoard[x][0][2][cube1].equals(player) && gameBoard[x][1][1][cube2].equals(player) && gameBoard[x][2][0][cube3].equals(player))
+                                    {
+                                        win = true;
+                                    }
+                                } catch (NullPointerException e){}
+                            }
+                        try {
+                            //Checks to see if the player got 3 in a row diagonally on all three axes
+                            if (gameBoard[0][0][0][cube1].equals(player) && gameBoard[1][1][1][cube2].equals(player) && gameBoard[2][2][2][cube3].equals(player))
+                            {
+                                win = true;
+                            }
+                        } catch (NullPointerException e){}
+                        try {
+                            //Checks to see if the player got 3 in a row diagonally on all three axes
+                            if (gameBoard[2][0][0][cube1].equals(player) && gameBoard[1][1][1][cube2].equals(player) && gameBoard[0][2][2][cube3].equals(player))
+                            {
+                                win = true;
+                            }
+                        } catch (NullPointerException e){}
+                        try {
+                            //Checks to see if the player got 3 in a row diagonally on all three axes
+                            if (gameBoard[0][2][0][cube1].equals(player) && gameBoard[1][1][1][cube2].equals(player) && gameBoard[2][0][2][cube3].equals(player))
+                            {
+                                win = true;
+                            }
+                        } catch (NullPointerException e){}
+                        try {
+                            //Checks to see if the player got 3 in a row diagonally on all three axes
+                            if (gameBoard[2][2][0][cube1].equals(player) && gameBoard[1][1][1][cube2].equals(player) && gameBoard[0][0][2][cube3].equals(player))
+                            {
+                                win = true;
+                            }
+                        } catch (NullPointerException e){}
+                        //DECENDING-------------------------------------
+                        try {
+                            //Checks to see if the player got 3 in a row diagonally on all three axes
+                            if (gameBoard[0][0][2][cube1].equals(player) && gameBoard[1][1][1][cube2].equals(player) && gameBoard[2][2][0][cube3].equals(player))
+                            {
+                                win = true;
+                            }
+                        } catch (NullPointerException e){}
+                        try {
+                            //Checks to see if the player got 3 in a row diagonally on all three axes
+                            if (gameBoard[2][0][2][cube1].equals(player) && gameBoard[1][1][1][cube2].equals(player) && gameBoard[0][2][0][cube3].equals(player))
+                            {
+                                win = true;
+                            }
+                        } catch (NullPointerException e){}
+                        try {
+                            //Checks to see if the player got 3 in a row diagonally on all three axes
+                            if (gameBoard[0][2][2][cube1].equals(player) && gameBoard[1][1][1][cube2].equals(player) && gameBoard[2][0][0][cube3].equals(player))
+                            {
+                                win = true;
+                            }
+                        } catch (NullPointerException e){}
+                        try {
+                            //Checks to see if the player got 3 in a row diagonally on all three axes
+                            if (gameBoard[2][2][0][cube1].equals(player) && gameBoard[1][1][1][cube2].equals(player) && gameBoard[0][0][2][cube3].equals(player))
+                            {
+                                win = true;
+                            }
+                        } catch (NullPointerException e){}
+                            }
+
+                }
+            }
         }
         return win;
     }
