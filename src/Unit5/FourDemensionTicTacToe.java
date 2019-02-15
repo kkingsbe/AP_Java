@@ -162,7 +162,7 @@ public class FourDemensionTicTacToe {
                 } catch (NullPointerException e) {}
                 try {
                     //Check to see if X won by playing three in a row diagonally from the top right in the same Time and Z dimensions
-                    if (gameBoard[2][2][zIndex][timeIndex].equals(player) && gameBoard[1][1][zIndex][timeIndex].equals(player) && gameBoard[0][0][zIndex][timeIndex].equals(player)) {
+                    if (gameBoard[2][0][zIndex][timeIndex].equals(player) && gameBoard[1][1][zIndex][timeIndex].equals(player) && gameBoard[0][2][zIndex][timeIndex].equals(player)) {
                         xWin = true;
                         break;
                     }
