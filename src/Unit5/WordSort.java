@@ -10,7 +10,7 @@ public class WordSort {
         String inputRaw = getInput();
         String inputClean = cleanInput(inputRaw);
         ArrayList<String> unsortedArr = toArr(inputClean);
-        ArrayList<String> sortedArr = sorted(unsortedArr);
+        ArrayList<String> sortedArr = selectionSort(unsortedArr);
         for(String string : sortedArr)
             System.out.println(string);
     }
@@ -30,7 +30,7 @@ public class WordSort {
         ArrayList<String> unsorted = new ArrayList<>(Arrays.asList(input.split(" ")));
         return unsorted;
     }
-    private static ArrayList<String> sorted(ArrayList<String> input)
+    private static ArrayList<String> selectionSort(ArrayList<String> input)
     {
         for(int index = 0; index < input.size(); index ++)
         {
@@ -49,6 +49,30 @@ public class WordSort {
             {
                 input.set(secondIndex, primaryItem);
                 input.set(index, secondaryItem);
+            }
+        }
+        return input;
+    }
+    private static ArrayList<String> insertionSort(ArrayList<String> input)
+    {
+        String temp;
+        for(int primaryIndex = 1; primaryIndex < input.size(); primaryIndex ++)
+        {
+            String word = input.get(primaryIndex);
+            String word2;
+            for(int secondaryIndex = primaryIndex - 1; secondaryIndex < input.size(); secondaryIndex --)
+            {
+                word2 = input.get(secondaryIndex);
+                if(word.compareTo(word2) < 0) //If word comes before word2
+                {
+                    temp = input.get(secondaryIndex);
+                    input.set(secondaryIndex, word);
+                    for(int x = secondaryIndex; x < input.size(); x++)
+                    {
+                        temp = input.get(x);
+
+                    }
+                }
             }
         }
         return input;
